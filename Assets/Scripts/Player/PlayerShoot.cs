@@ -28,21 +28,17 @@ public class PlayerShoot : MonoBehaviour
     void CreateBullet(){
         _timer = _shootSpeed;
 
-        var _ballType = _bulletData.Prefab;
-        var go = Instantiate(_ballType).GetComponent<BulletBehaviour>();
+        Vector2 playerPos = transform.position;
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 direction = mousePos - playerPos;
 
-        var mousePos = Input.mousePosition;
-        var mousePosition = _camera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, _camera.nearClipPlane));
-        mousePosition.z = 0f;
-        var dir = mousePosition - transform.position;
+        float time = _bulletData.Range * 2;
 
-        print($"{mousePosition}");
-        print($"{transform.position}");
-        go._data = _bulletData;
-
-        go.transform.position = transform.position;
-        go.transform.LookAt(dir);
-
-        go.gameObject.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.right*_shootSpeed*3, ForceMode2D.Impulse);
+        var projectile = Instantiate(_bulletData.Prefab);
+        projectile.transform.position = playerPos;
+        Rigidbody2D rbProjectile = projectile.GetComponent<Rigidbody2D>();
+        rbProjectile.AddForce(direction * _bulletData.Speed, ForceMode2D.Impulse);
+        Destroy(projectile, time);
+         
     }
 }
