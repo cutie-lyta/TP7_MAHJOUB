@@ -10,7 +10,7 @@ public class EnemyMovement : MonoBehaviour
     private EnemyMain _main;
     
 
-    private void Awake(){
+    private void Start(){
         _ai = GetComponent<EnemyAI>();
         _rb = GetComponent<Rigidbody2D>();
         _main = GetComponent<EnemyMain>();

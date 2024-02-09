@@ -152,6 +152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d2dc0ed959430b47ac5e21b7cfc7b0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Enemies:
+  - {fileID: 11400000, guid: 55af53306d5c50b40a2f84c40b070079, type: 2}
+  _rate: 3
 --- !u!4 &461659326
 Transform:
   m_ObjectHideFlags: 0
@@ -272,7 +275,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:

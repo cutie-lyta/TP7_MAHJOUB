@@ -8,9 +8,10 @@ public class EnemyShoot : MonoBehaviour
     private BulletData _bulletData;
     private float _timer = 0.0f;
 
-    private void Awake(){
+    private void Start(){
         _shootSpeed = GetComponent<EnemyMain>().Data.ShootRate;
         _bulletData = GetComponent<EnemyMain>().Data.BulletData;
+        _ai = GetComponent<EnemyAI>();
     }
 
     // Update is called once per frame

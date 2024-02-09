@@ -14,7 +14,7 @@ public class GameSceneData : MonoBehaviour
 
     void FixedUpdate(){
         if(_timer <= 0){
-            var enemy = Enemies[Random.Range(0, Enemies.Count)];
+            var enemy = Enemies[Random.Range(0, Enemies.Count - 1)];
             
 
             float spawnY = Random.Range
@@ -22,7 +22,16 @@ public class GameSceneData : MonoBehaviour
             float spawnX = Random.Range
                 (Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).x, Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x);
 
-            Instantiate(enemy.Prefab, new Vector2(spawnX, spawnY), Quaternion.Euler(0, 0, 0));
+            GameObject prefab = enemy.Prefab;
+            Vector2 position = new Vector2(spawnX, spawnY);
+
+            GameObject obj = Instantiate(prefab);
+
+            obj.transform.position = position;
+            obj.GetComponent<EnemyMain>().Data = enemy;
+
+            _timer = _rate;
+
         }
 
         _timer -= Time.fixedDeltaTime;

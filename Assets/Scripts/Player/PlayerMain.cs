@@ -8,11 +8,6 @@ public class PlayerMain : MonoBehaviour
    private BulletData _bulletType;
    [HideInInspector] public CharacterData Data;
 
-   public void Init(CharacterData data){
-       Data = data;
-       _bulletType = data.DefaultBulletData;
-   }
-
    public void TakeDamage(int damage){
       _health -= damage;
       if(_health <= 0){

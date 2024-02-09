@@ -25,12 +25,14 @@ public class PlayerShoot : MonoBehaviour
        _timer -= Time.fixedDeltaTime * 10;
     }
 
-    void CreateBullet(){
+    void CreateBullet()
+    {
         _timer = _shootSpeed;
 
-        Vector2 playerPos = transform.position;
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 direction = mousePos - playerPos;
+        Vector3 playerPos = transform.position;
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0f;
+        Vector3 direction = mousePos - playerPos;
 
         float time = _bulletData.Range * 2;
 
