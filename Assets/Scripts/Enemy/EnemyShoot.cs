@@ -35,5 +35,6 @@ public class EnemyShoot : MonoBehaviour
 
         go.transform.LookAt(_vector);
         go.GetComponent<BulletBehaviour>()._data = _bulletData;
+        go.GetComponent<BulletBehaviour>()._creator = "Enemy";
     } 
 }

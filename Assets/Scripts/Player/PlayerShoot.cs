@@ -37,6 +37,8 @@ public class PlayerShoot : MonoBehaviour
         float time = _bulletData.Range * 2;
 
         var projectile = Instantiate(_bulletData.Prefab);
+        projectile.GetComponent<BulletBehaviour>()._creator = "Player";
+        projectile.GetComponent<BulletBehaviour>()._data = _bulletData;
         projectile.transform.position = playerPos;
         Rigidbody2D rbProjectile = projectile.GetComponent<Rigidbody2D>();
         rbProjectile.AddForce(direction * _bulletData.Speed, ForceMode2D.Impulse);
